@@ -5,11 +5,12 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Consulta from './pages/Consulta';
 import Validar from './pages/Validar';
-import GestionarMedicamentos from './pages/GestionarMedicamentos';
 import GestionarUsuarios from './pages/GestionarUsuarios';
 import Detalle from './pages/Detalle';
 import AgregarUsuario from './pages/AgregarUsuario';
 import EditarUsuario from './pages/EditarUsuario';
+import GestionarMedicamentos from './pages/GMedicamentosRegistrar';
+import GestionarMedicamentosBuscar from './pages/GMedicamentosBuscar';
 const App = () => {
 
   return (
@@ -20,11 +21,14 @@ const App = () => {
           <Route path="/inicio" component={Home} />
           <Route path="/consultar" component={Consulta} />
           <Route path="/transacciones" component={Validar} />
-          <Route path="/medicamentos" component={GestionarMedicamentos} />
           <Route path="/usuarios" component={GestionarUsuarios} />
           <Route path="/detalle/:id" component={Detalle} />
           <Route path="/agregarusuario" component={AgregarUsuario} />
           <Route path="/editarUsuario/:id" component={EditarUsuario} />
+
+          <Route path="/medicamentos/buscar" component={GestionarMedicamentosBuscar} />
+          <Route path="/medicamentos/registrar" component={GestionarMedicamentos} />
+
           <Redirect to="/" />
         </Switch>
       </div>

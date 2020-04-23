@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "sislmp"
+    "default": "sislmp",
+    "sislmp-upc-ui": "sislmp-upc-ui"
   }
 }
