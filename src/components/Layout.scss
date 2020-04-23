@@ -1,0 +1,39 @@
+.component-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 70px;
+
+    .container-wrapper{
+        width: calc( 100% - 200px);
+        background-color: white;
+        min-height: 100vh;
+        color: #004355;
+        transition: 1s;
+
+        &.isClosed{
+            width: 100%;
+        }
+        .overlay-c{
+            display: none;
+        }
+        @media (max-width: 768px){
+            width: 100%;
+            
+            .overlay-c{
+                display: block;
+                width: 100%;
+                min-height: 100vh;
+                background-color: rgba(0,0,0,0.4);
+                position: fixed;
+                z-index: 1;
+                top: 70px;
+            }
+            &.isClosed{
+                .overlay-c{
+                    display: none;
+                }
+            }
+        }
+    }
+}

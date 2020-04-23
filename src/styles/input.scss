@@ -1,0 +1,15 @@
+.input-component{
+    background-color: #F8F8F8;
+    padding: 10px;
+    width: 100%;
+    color: #004355;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-bottom: 15px;
+
+
+    &::placeholder{
+        color: #A6A6A6;
+    }
+}
