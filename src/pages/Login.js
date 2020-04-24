@@ -34,7 +34,10 @@ export default class Login extends Component {
             }
         )
     }
-
+    redirect(){
+        localStorage.setItem("Sin Cuenta",1);
+        this.props.history.push('/consultar');
+    }
     handleFormSubmit(e){
         e.preventDefault();
       
@@ -113,7 +116,7 @@ export default class Login extends Component {
                      >
                          INGRESAR
                      </button>
-                     <Link style={{marginTop:'5px'}} to="/consultar" style={{color: '#339CB9'}} a> Ingresar sin cuenta</Link>
+                     <Link style={{marginTop:'5px'}} onClick={() => this.redirect()} style={{color: '#339CB9'}} a> Ingresar sin cuenta</Link>
                     </form>   
                 </div>   
             </React.Fragment>    

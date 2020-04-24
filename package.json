@@ -16,6 +16,8 @@
     "mysql": "^2.16.0",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
+    "react-alert": "^7.0.0",
+    "react-alert-template-basic": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-dropdown": "^1.7.0",
     "react-notify-toast": "^0.5.1",

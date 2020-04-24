@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { createHashHistory } from 'history'
-
+import Notifications, {notify} from 'react-notify-toast';
 import Layout from '../components/Layout'
 
 import "../styles/button.scss"
@@ -14,10 +14,17 @@ export default class Consulta extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
     onSearch(){
-        //this.props.history.push("/detalle/dukoral")
+        //http://localhost:3006/
+        //https://sislmp-upc.herokuapp.com
         axios.get('https://sislmp-upc.herokuapp.com/Consultar/'+ this.state.codigo).then(
             response => {
-                    this.props.history.push("/detalle/"+ this.state.codigo)
+                    if(response.data.count == 0){
+                        notify.show("El código no tiene un medicamento asociado, busque otro código.",5000);
+                        //(window.confirm("El código no tiene un medicamento asociado, busque otro código.");
+                    }else{
+                        this.props.history.push("/detalle/"+ this.state.codigo)
+                    }
+                    
                   }).catch(function(error){
                     console.log(error);
                 })
@@ -34,6 +41,7 @@ export default class Consulta extends Component {
             <Layout { ...this.props }>
                 <div>
                     <br />
+                    <Notifications />
                     <h5>Consulta de medicamentos</h5>
                     <p>Ingrese el código único:</p>
                     <div className="row">

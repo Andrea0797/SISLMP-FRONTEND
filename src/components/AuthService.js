@@ -3,6 +3,8 @@ import decode from 'jwt-decode';
 export default class AuthService {
     // Initializing important variables
     constructor(domain) {
+        //http://localhost:3006/
+        //https://sislmp-upc.herokuapp.com
         this.domain = domain || 'https://sislmp-upc.herokuapp.com' // API server domain
         this.fetch = this.fetch.bind(this) // React binding stuff
         this.login = this.login.bind(this)
