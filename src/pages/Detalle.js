@@ -61,7 +61,7 @@ export default class Detalle extends Component {
                             },
                             {
                                 title: "Vías de administración",
-                                description: response.data.data.ViasAdministracion
+                                description: response.data.data.Vias_Administracion
                             },
                             {
                                 title: "Características",

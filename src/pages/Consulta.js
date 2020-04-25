@@ -19,7 +19,7 @@ export default class Consulta extends Component {
         axios.get('https://sislmp-upc.herokuapp.com/Consultar/'+ this.state.codigo).then(
             response => {
                     if(response.data.count == 0){
-                        notify.show("El código no tiene un medicamento asociado, busque otro código.",5000);
+                        notify.show("El LOTE no tiene un medicamento asociado.",5000);
                         //(window.confirm("El código no tiene un medicamento asociado, busque otro código.");
                     }else{
                         this.props.history.push("/detalle/"+ this.state.codigo)
@@ -43,7 +43,7 @@ export default class Consulta extends Component {
                     <br />
                     <Notifications />
                     <h5>Consulta de medicamentos</h5>
-                    <p>Ingrese el código único:</p>
+                    <p>Ingrese el código de lote:</p>
                     <div className="row">
                         <div className="col-sm-12 col-md-8 col-lg-6 col-xl-6">
                             <div className="d-flex align-items-center">
