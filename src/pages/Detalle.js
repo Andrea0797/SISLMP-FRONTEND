@@ -6,8 +6,6 @@ import FabricanteIcon from "../assets/Fabricante.svg";
 import LoteIcon from "../assets/Lote.svg";
 import ShipmentIcon from "../assets/Shipment.svg";
 
-const IMG_DETALLE = "https://i.ytimg.com/vi/2vcFLUnhG3w/maxresdefault.jpg"
-
 export default class Detalle extends Component {
     constructor(){
         super();
@@ -48,18 +46,18 @@ export default class Detalle extends Component {
                             },
                             {
                                 tipo: "Lote:",
-                                nombre: response.data.data.lote,
+                                nombre: response.data.data.Lote,
                                 icon: LoteIcon
                             },
                         ],
                         detalles:[
                             {
                                 title: "Formas farmacéuticas",
-                                description: response.data.data.formaFarmaceutica
+                                description: response.data.data.Forma_Farmaceutica
                             },
                             {
                                 title: "Principios activos",
-                                description: response.data.data.PrincipiosActivos
+                                description: response.data.data.Principios_Activos
                             },
                             {
                                 title: "Vías de administración",
@@ -113,7 +111,7 @@ export default class Detalle extends Component {
                         <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                             <div className="border rounded p-3 mt-4" style={{ height: 180}}>
                                 <img
-                                    src={ objMedicamento.Ruta_IMG }
+                                    src={ objMedicamento.IMG_URL }
                                     alt="img"
                                     style={{
                                         width: "100%", objectFit: "contain", height: "100%"
@@ -125,8 +123,8 @@ export default class Detalle extends Component {
                             <div className="border rounded pb-0 mt-4" style={{padding: 20, height: 180}}>
                                 <h5><b>{objMedicamento.nombreComercial}</b></h5>
                                 <p><b>Nº de registro: </b>{objMedicamento.Nro_Registro}</p>
-                                <p className="text-success">Autorizado (12/09/2019)</p>
                                 <p><b>Estado: </b>{objMedicamento.Estado}</p>
+                                <p className="text-success">Autorizado (12/09/2019)</p>
                             </div>
                         </div>
                     </div>
