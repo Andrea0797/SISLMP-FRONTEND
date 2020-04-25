@@ -44,7 +44,8 @@ export default class GestionarMedicamentos extends Component {
             id_digemid: this.state.Id_Medicamento,
             Lote: this.state.Lote,
             FechaVencimiento: this.state.startDate,
-            IMG_URL: "https://cdn77.pressenza.com/wp-content/uploads/2020/03/Heberon-Alfa-R-720x405.jpg"
+            //IMG_URL: "https://cdn77.pressenza.com/wp-content/uploads/2020/03/Heberon-Alfa-R-720x405.jpg"
+            IMG_URL: this.state.file
         };
        console.log(obj);
         axios.post('https://sislmp-upc.herokuapp.com/medicamentos/save', obj)
@@ -183,6 +184,10 @@ export default class GestionarMedicamentos extends Component {
                                     />
                                 <p style={{margin: "10px 0 0 0"}}>Archivos:</p>
                                 <input
+                                name="url"
+                                onChange={(event) => this.setState({
+                                    file: URL.createObjectURL(event.target.files[0])
+                                  })}
                                 className="input-component" 
                                 style={{margin: 0}}
                                     type="file"
