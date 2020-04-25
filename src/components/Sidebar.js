@@ -107,7 +107,7 @@ export default class Sidebar extends Component {
                         BUSCAR MEDICAMENTOS
                     </NavLink>
                 </div>
-                <NavLink to="/usuarios" onClick={ ( e ) => this.toggleUsers( e ) }
+                <NavLink to="/Gusuarios/buscar" onClick={ ( e ) => this.toggleUsers( e ) }
                 style={{borderTop: "solid 1px white",
                 display:  rolUsuario == "Administrador I"  ? "block" : "none"
             }}
@@ -123,7 +123,7 @@ export default class Sidebar extends Component {
                 </NavLink>
                 
                 <div className={  isShowedUser ? "container-toggled isactive" : "container-toggled" }>
-                    <NavLink to="/usuarios" className="childlink"
+                    <NavLink to="/Gusuarios/buscar" className="childlink"
                     style={{borderTop: "solid 1px white",
                     display:  rolUsuario == "Administrador I"  ? "block" : "none"
                 }}
@@ -131,7 +131,7 @@ export default class Sidebar extends Component {
                         <img src={ ICON_USER } alt="imageicon"/>
                         BUSCAR USUARIOS
                     </NavLink>
-                    <NavLink to="/agregarusuario" className="childlink"
+                    <NavLink to="/Gusuarios/agregar" className="childlink"
                     style={{borderTop: "solid 1px white",
                     display:  rolUsuario == "Administrador I"  ? "block" : "none"
                 }}

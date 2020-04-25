@@ -7,6 +7,8 @@ import Consulta from './pages/Consulta';
 import Validar from './pages/Validar';
 import GestionarUsuarios from './pages/GestionarUsuarios';
 import Detalle from './pages/Detalle';
+import GUsuariosBuscar from './pages/GUsuariosBuscar';
+import GUsuariosRegistrar from './pages/GUsuariosRegistrar';
 import AgregarUsuario from './pages/AgregarUsuario';
 import EditarUsuario from './pages/EditarUsuario';
 import GestionarMedicamentos from './pages/GMedicamentosRegistrar';
@@ -25,7 +27,8 @@ const App = () => {
           <Route path="/detalle/:id" component={Detalle} />
           <Route path="/agregarusuario" component={AgregarUsuario} />
           <Route path="/editarUsuario/:id" component={EditarUsuario} />
-
+          <Route path="/Gusuarios/buscar" component={GUsuariosBuscar} />
+          <Route path="/Gusuarios/agregar" component={GUsuariosRegistrar} />
           <Route path="/medicamentos/buscar" component={GestionarMedicamentosBuscar} />
           <Route path="/medicamentos/registrar" component={GestionarMedicamentos} />
 

@@ -42,7 +42,7 @@ export default class Edit extends Component {
     
     getUser(){
         console.log(this.props.match.params)
-        axios.get('https://sislmp-upc.herokuapp.comeditarUsuario/'+this.props.match.params.id).then(
+        axios.get('https://sislmp-upc.herokuapp.com/editarUsuario/'+this.props.match.params.id).then(
             response => {
                     this.setState({
                         user: response.data.data,

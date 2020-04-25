@@ -4,9 +4,73 @@ import Layout from '../components/Layout'
 import "../styles/button.scss"
 import "../styles/input.scss"
 import {  Modal } from 'reactstrap'
+import axios from 'axios';
+import Notifications, {notify} from 'react-notify-toast';
+import Select from 'react-select';
+import { createHashHistory } from 'history'
 import CheckICON from "../assets/check.svg"
-
+const options = [
+    { label: "Administrador I", value: 1 },
+  { label: "Administrador II", value: 2 },
+  { label: "Usuario A", value: 3 },
+  { label: "Usuario B", value: 4 },
+  { label: "Usuario C", value: 5 }
+  ];
+  const shortid = require('shortid');
+export const history = createHashHistory()
 export default class AgregarUsuario extends Component {
+    constructor(props){
+        super(props)
+        this.state={
+            Usuario: '',
+        }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleChangeSelect = this.handleChangeSelect.bind(this)
+    }
+    handleChangeSelect(e) {
+        this.setState(
+            {
+                rol: e.label
+            }
+        )
+      }
+    handleChange(e) {
+        this.setState(
+            {
+                [e.target.name]: e.target.value
+            }
+        )
+      }
+      agregar() {
+        
+        const obj = {
+            Codigo: shortid.generate(),
+            Nombre: this.state.nombre,
+            Empresa: this.state.empresa,
+            Username: this.state.username,
+            Email: this.state.username,
+            Rol: this.state.rol,
+            RUC: this.state.ruc,
+            Direccion: this.state.direccion
+        };
+       console.log(obj);
+        axios.post('https://sislmp-upc.herokuapp.com/getUsuarios/save', obj)
+            .then(
+                res =>{
+                    console.log(res);
+                    if(res.data.message == "Nuevo registro agregado."){
+                        this.toggle();
+                        setTimeout(() => {
+                            this.props.history.push('/Gusuarios/buscar');
+                          }, 2000)
+                    }else{
+                        notify.show(res.data.message.message,5000);
+                        setTimeout(() => {
+                            this.props.history.push('/Gusuarios/buscar');
+                          }, 2000)
+                    }
+            })
+  }
     state={
          isOpen: false
     }
@@ -37,47 +101,70 @@ export default class AgregarUsuario extends Component {
                             <div className="border rounded mt-4" style={{padding: 20}}>
                                 <p style={{margin: "10px 0 0 0"}}>Nombre:</p>
                                 <input
+                                    name="nombre"
                                     className="input-component"
                                     placeholder="Ejemplo: Manuel"
+                                    onChange={this.handleChange}
                                     style={{margin: 0}}
+                                    required
                                 />
                                 <p style={{margin: "10px 0 0 0"}}>Email:</p>
                                 <input
+                                    name="email"
                                     className="input-component"
                                     placeholder="Ejemplo: manuel@gmail.com"
+                                    onChange={this.handleChange}
+                                    style={{margin: 0}}
+                                    type="email"
+                                />
+                                <p style={{margin: "10px 0 0 0"}}>Nombre de Usuario:</p>
+                                <input
+                                    name="username"
+                                    className="input-component"
+                                    placeholder="Ejemplo: manuelmaza"
+                                    onChange={this.handleChange}
                                     style={{margin: 0}}
                                     type="email"
                                 />
                                 
                                 <p style={{margin: "10px 0 0 0"}}>Rol:</p>
-                                <select
-                                    className="input-component"
-                                    placeholder="Ejemplo: 123-000k32"
-                                    style={{margin: 0, height: 40}}
-                                >
-                                    <option>Seleccione un rol</option>
-                                    <option>Administrador I</option>
-                                    <option>Administrador II</option>
-                                    <option>Administrador III</option>
-                                    <option>Usuario</option>
-                                </select>
+                                
+                                <Select name="rol" 
+                                        onChange={this.handleChangeSelect} 
+                                        style={{margin: 0, height: 40}} 
+                                        options={options}/>
                                 <p style={{margin: "10px 0 0 0"}}>Ruc:</p>
                                 <input
+                                    name="ruc"
                                     className="input-component"
+                                    onChange={this.handleChange}
                                     placeholder="Ejemplo: 1234400012"
                                     style={{margin: 0}}
+                                    required
+                                />
+                                <p style={{margin: "10px 0 0 0"}}>Empresa:</p>
+                                <input
+                                    name="empresa"
+                                    className="input-component"
+                                    onChange={this.handleChange}
+                                    placeholder="Ejemplo: Soluciones ABC"
+                                    style={{margin: 0}}
+                                    required
                                 />
                                 <p style={{margin: "10px 0 0 0"}}>Direccion:</p>
                                 <input
+                                    name="direccion"
                                     className="input-component"
+                                    onChange={this.handleChange}
                                     placeholder="Ejemplo: Av 123"
                                     style={{margin: 0}}
+                                    required
                                 />
                                 
                                 
                                 <button
                                     className="btn btn-blue"
-                                    onClick={ () => this.toggle() }
+                                    onClick={ () => this.agregar() }
                                     style={{margin: "30px 0 0 0"}}
                                 >
                                     AGREGAR
