@@ -192,7 +192,7 @@ export default class GestionarMedicamentos extends Component {
                                 style={{margin: 0}}
                                     type="file"
                                 />
-                                <input
+                                {/* <input
                                     className="input-component"
                                     style={{margin: 0}}
                                     type="file"
@@ -201,7 +201,7 @@ export default class GestionarMedicamentos extends Component {
                                     className="input-component"
                                     style={{margin: 0}}
                                     type="file"
-                                />
+                                /> */}
                                 <button
                                     className="btn btn-blue"
                                     onClick={ () => this.agregar() }
