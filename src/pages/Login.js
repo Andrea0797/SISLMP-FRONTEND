@@ -59,7 +59,7 @@ export default class Login extends Component {
                 <div className="alert alert-info" role="alert"
                     style = {{ 
                         position: "absolute",
-                        marginTop: '-192px'
+                        top: 10
                     }}
                 >
                     { this.state.message }
@@ -116,7 +116,7 @@ export default class Login extends Component {
                      >
                          INGRESAR
                      </button>
-                     <Link style={{marginTop:'5px'}} onClick={() => this.redirect()} style={{color: '#339CB9'}} a> Ingresar sin cuenta</Link>
+                     <Link onClick={() => this.redirect()} style={{color: '#339CB9',marginTop:20}} a> Ingresar sin cuenta</Link>
                     </form>   
                 </div>   
             </React.Fragment>    
