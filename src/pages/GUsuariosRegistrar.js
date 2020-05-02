@@ -9,6 +9,8 @@ import Notifications, {notify} from 'react-notify-toast';
 import Select from 'react-select';
 import { createHashHistory } from 'history'
 import CheckICON from "../assets/check.svg"
+
+
 const options = [
     { label: "Administrador I", value: 1 },
   { label: "Administrador II", value: 2 },
@@ -23,6 +25,7 @@ export default class AgregarUsuario extends Component {
         super(props)
         this.state={
             Usuario: '',
+            nombre: null, empresa: null, username: null, rol: null, ruc: null, direccion: null
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleChangeSelect = this.handleChangeSelect.bind(this)
@@ -43,15 +46,27 @@ export default class AgregarUsuario extends Component {
       }
       agregar() {
         
+        const { nombre, empresa, username, rol, ruc, direccion } = this.state;
+        if (
+            !nombre ||  !empresa || !username ||  !rol || !ruc || !direccion
+        ) {
+            notify.show("Ingresa todos los campos.",5000);
+            return;
+        }
+        if ( !window.confirm("¿Está seguro de registrar un nuevo usuario?") ) {
+            notify.show("No se agregó al usuario",5000);
+            return;
+        }
+        notify.show("Registrando al usuario",5000);
         const obj = {
             Codigo: shortid.generate(),
-            Nombre: this.state.nombre,
-            Empresa: this.state.empresa,
-            Username: this.state.username,
-            Email: this.state.username,
-            Rol: this.state.rol,
-            RUC: this.state.ruc,
-            Direccion: this.state.direccion
+            Nombre: nombre,
+            Empresa: empresa,
+            Username: username,
+            Email: username,
+            Rol: rol,
+            RUC: ruc,
+            Direccion: direccion
         };
        console.log(obj);
         axios.post('https://sislmp-upc.herokuapp.com/getUsuarios/save', obj)
@@ -59,6 +74,7 @@ export default class AgregarUsuario extends Component {
                 res =>{
                     console.log(res);
                     if(res.data.message == "Nuevo registro agregado."){
+                        notify.show(res.data.message.message,5000);
                         this.toggle();
                         setTimeout(() => {
                             this.props.history.push('/Gusuarios/buscar');
@@ -93,6 +109,7 @@ export default class AgregarUsuario extends Component {
         const { isOpen } = this.state;
         return (
             <Layout { ...this.props }>
+            <Notifications />
                 <div>
                     <br />
                     <h5>Agregar usuario</h5>

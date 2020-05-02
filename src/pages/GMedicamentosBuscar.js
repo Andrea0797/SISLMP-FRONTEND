@@ -116,6 +116,7 @@ export default class GestionarMedicamentos extends Component {
         const {medicamentos } = this.state
         return (
             <Layout { ...this.props }>
+                <Notifications />
                 <div>
                     <br />
                     <h5>Buscar medicamentos</h5>
@@ -130,14 +131,20 @@ export default class GestionarMedicamentos extends Component {
                                     onChange={this.handleChange}
                                     style={{margin: 0}}
                                 />
-                                <p style={{margin: "10px 0 0 0"}}>Nro de Registro:</p>
-                                <input
-                                    name="nro"
-                                    className="input-component"
-                                    onChange={this.handleChange}
-                                    placeholder="Ejemplo: 123-000k32"
-                                    style={{margin: 0}}
-                                />
+                                {
+                                    /**
+                                     * <p style={{margin: "10px 0 0 0"}}>Nro de Registro:</p>
+                                     + <input
+                                     +     name="nro"
+                                     +     className="input-component"
+                                     +     onChange={this.handleChange}
+                                     +     placeholder="Ejemplo: 123-000k32"
+                                     +     style={{margin: 0}}
+                                     + />
+                                     * 
+                                     */
+                                }
+                                
                                 <p style={{margin: "10px 0 0 0"}}>Lote:</p>
                                 <input
                                     name="lote"
@@ -180,17 +187,19 @@ export default class GestionarMedicamentos extends Component {
                                         <th>Nombre del medicamento</th>
                                         <th>Nro de Registros</th>
                                         <th>Fecha de registro</th>
+                                        <th>Cantidad x Lote</th>
                                         <th>Opciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {
                                             medicamentos.map( ( item, index ) => (
-                                                <tr keY={`item-${item.name}`}>
+                                                <tr key={`item-${index}${item.name}`}>
                                                     <th scope="row">{index}</th>
                                                     <td>{item.Nombre_Comercial}</td>
                                                     <td>{item.Nro_Registro}</td>
                                                     <td>{moment(item.FechaVencimiento).format("YYYY/MM/DD")}</td>
+                                                    <td>{item.Cantidad || 0}</td>
                                                     <td>
                                                         <button
                                                             className="btn btn-blue"

@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Layout from '../components/Layout'
 import { Table } from 'reactstrap'
 import "../styles/button.scss"
+import Notifications, {notify} from 'react-notify-toast';
 
 export default class Validar extends Component {
     state={
@@ -40,16 +41,21 @@ export default class Validar extends Component {
         })
     }
     onAccept(){
-        alert("Se aceptó el medicamento")
+        if ( window.confirm("¿Está seguro de aceptar el medicamento?") ) {
+            notify.show("Se aceptó el medicamento",5000);
+        }
     }
     onDecline(){
-        alert("Se rechazó el medicamento")
+        if ( window.confirm("¿Está seguro de rechazar el medicamento?") ) {
+            notify.show("Se rechazó el medicamento",5000);
+        }
     }
     
     render() {
         const { items } = this.state;
         return (
             <Layout { ...this.props }>
+            <Notifications />
                 <div className="container">
                     <br />
                     <h5>Validar transacciones</h5>
@@ -60,7 +66,11 @@ export default class Validar extends Component {
                                 <input
                                     className="input-component"
                                     placeholder="Ejemplo: Dukoral"
-                                    style={{margin: 0}}
+                                    disabled
+                                    style={{
+                                        margin: 0,
+                                        cursor: "not-allowed"
+                                    }}
                                 />
                                 <p style={{margin: "10px 0 0 0"}}>Lote:</p>
                                 <input

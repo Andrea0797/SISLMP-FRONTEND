@@ -120,6 +120,7 @@ export default class GestionarMedicamentos extends Component {
         const { isOpen } = this.state;
         return (
             <Layout { ...this.props }>
+            <Notifications />
                 <div>
                     <br />
                     <h5>Registrar medicamentos</h5>

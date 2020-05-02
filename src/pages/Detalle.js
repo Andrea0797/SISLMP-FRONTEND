@@ -6,6 +6,8 @@ import FabricanteIcon from "../assets/Fabricante.svg";
 import LoteIcon from "../assets/Lote.svg";
 import ShipmentIcon from "../assets/Shipment.svg";
 
+import IMG_DEFAULT from "../assets/lote-default.jpg";
+
 export default class Detalle extends Component {
     constructor(){
         super();
@@ -111,8 +113,12 @@ export default class Detalle extends Component {
                         <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                             <div className="border rounded p-3 mt-4" style={{ height: 180}}>
                                 <img
-                                    src={ objMedicamento.IMG_URL }
-                                    alt="img"
+                                    src={ objMedicamento.IMG_URL || "https://img.freepik.com/vector-gratis/medicamentos-pastillas-botellas-drogas-farmacia-ilustracion-plana_102902-333.jpg?size=626&ext=jpg" }
+                                    alt="imagen"
+                                    onError={(e)=>{
+                                        e.target.onerror = null;
+                                        e.target.src="https://img.freepik.com/vector-gratis/medicamentos-pastillas-botellas-drogas-farmacia-ilustracion-plana_102902-333.jpg?size=626&ext=jpg"
+                                    }}
                                     style={{
                                         width: "100%", objectFit: "contain", height: "100%"
                                     }}
