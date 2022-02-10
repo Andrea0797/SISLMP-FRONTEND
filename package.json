@@ -14,7 +14,7 @@
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
     "mysql": "^2.16.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-alert": "^7.0.0",
     "react-alert-template-basic": "^1.0.0",
